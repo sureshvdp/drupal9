@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Custom Registration Primary module file.
+ */
+
+/**
+ * Implement hook_mail().
+ */
+function custom_registration_mail($key, &$message, $params) { 
+  $options = array(
+    'langcode' => $message['langcode'],
+  );
+  switch ($key) {
+    case 'general_mail':
+      $message['from'] = \Drupal::config('system.site')->get('mail');
+      $message['subject'] = t('General mail: @subject', ['@subject' => $params['subject']], $options);
+      $message['body'][] = $params['body'];
+      break;
+  }
+
+  }
+

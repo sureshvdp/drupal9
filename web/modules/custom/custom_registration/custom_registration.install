@@ -1,0 +1,85 @@
+<?php
+
+/**
+ * @file
+ * Install, update, and uninstall functions for the custom registration module.
+ */
+
+use Drupal\Core\Database\Database;
+
+/**
+ * Implements hook_schema().
+ */
+function custom_registration_schema()
+{
+  // Store the records of strength activities 
+  $schema['custom_registration'] = [
+    'description' => 'Strength Activities details',
+    'fields' => [
+      'id' => [
+        'description' => 'Autoincrement ID',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'first_name' => [
+        'type' => 'varchar',
+        'length' => 50,
+        'not null' => TRUE,
+        'description' => 'First Name',
+      ],
+      'last_name' => [
+        'type' => 'varchar',
+        'length' => 50,
+        'not null' => TRUE,
+        'description' => 'Last Name',
+      ],
+      'email' => [
+        'type' => 'varchar',
+        'length' => 50,
+        'not null' => TRUE,
+        'description' => 'Email ID',
+      ],
+      'phone' => [
+        'type' => 'varchar',
+        'length' => 50,
+        'not null' => TRUE,
+        'description' => 'Contact Number',
+      ],
+      'company' => [
+        'type' => 'varchar',
+        'length' => 100,
+        'not null' => TRUE,
+        'description' => 'Company Name',
+      ],
+      'address' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => 'Address',
+      ],
+      'message' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => 'Contact Message',
+      ],
+      'terms' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => 'Terms and Conditions',
+      ],
+      'ip_address' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => 'User IP address',
+      ],
+
+    ],
+    'primary key' => ['id'],
+  ];
+
+  return $schema;
+}
+
